@@ -33,6 +33,10 @@ public  class gerenciaAluno implements igerenciadorCadastroAluno{
         
     }
 
+    public List<Aluno> getAlunosCadastrados() {
+        return alunosCadastrados;
+    }
+
 
    
     

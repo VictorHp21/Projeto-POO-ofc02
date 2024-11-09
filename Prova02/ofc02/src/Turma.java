@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Turma {
@@ -6,10 +7,9 @@ public class Turma {
     private Professor professor;
     private List<Aluno> alunosTurma;
 
-    public Turma(int codigoTurma, Disciplina disciplina, Professor professor, List<Aluno> alunosTurma) {
+    public Turma(int codigoTurma) {
         this.codigoTurma = codigoTurma;
-        this.disciplina = disciplina;
-        this.professor = professor;
+        this.alunosTurma = new ArrayList<>();
     }
 
     public void adcAlunoTurma(Aluno aluno) {
@@ -38,6 +38,17 @@ public class Turma {
     }
 
     public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+
+    //metodo adiciona disciplina
+
+    public void adicionarDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public void adicionarProfessor(Professor professor) {
         this.professor = professor;
     }
 }

@@ -8,7 +8,7 @@ public class gerenciaProfessor implements igerenciadorCadastroProfessor {
     @Override
     public void cadastrarProfessor(Professor professor) {
         
-            System.out.println("Cadastrando Aluno...");
+            System.out.println("Cadastrando Professor...");
             professoresCadastrados.add(professor);
         
     }
@@ -33,6 +33,10 @@ public class gerenciaProfessor implements igerenciadorCadastroProfessor {
         }
 
     
+    }
+
+    public List<Professor> getProfessoresCadastrados() {
+        return professoresCadastrados;
     }
 
 }

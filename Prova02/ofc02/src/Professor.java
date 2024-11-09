@@ -1,17 +1,19 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Professor extends Pessoa{
     private String areaDeFormacao;
     private int AnoAdmissao;
     private String email;
-    private List<Disciplina> disciplinas;
+    private List<Disciplina> disciplinasProfessor;
 
-    public Professor(String nome, String DataNascimento, long telefone, Endereco endereco, String areaDeFormacao, int anoAdmissao, String email, List<Disciplina> disciplinas) {
+    public Professor(String nome, String DataNascimento, long telefone, Endereco endereco, String areaDeFormacao, int anoAdmissao, String email) {
         super(nome, DataNascimento, telefone, endereco);
         this.areaDeFormacao = areaDeFormacao;
         this.AnoAdmissao = anoAdmissao;
         this.email = email;
-        this.disciplinas = disciplinas;
+        this.disciplinasProfessor = new ArrayList<>();
+       
     }
     
 
@@ -34,7 +36,7 @@ public class Professor extends Pessoa{
     }
 
     public List<Disciplina> getDisciplinas(){
-        return disciplinas;
+        return disciplinasProfessor;
     }
 
     public String getAreaDeFormacao() {
@@ -48,10 +50,16 @@ public class Professor extends Pessoa{
     //outros metodos
 
     public void ListarDisciplinasProfessor(){
-        for (Disciplina disciplina : disciplinas) {
-            System.out.println("- " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+        int i = 0;
+        for (Disciplina disciplina : disciplinasProfessor) {
+            System.out.println("-Disciplina" + (i+1) + ": " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+            i++;
         }
     
+    }
+
+    public void adicionarDisciplina(Disciplina disciplina){
+        this.disciplinasProfessor.add(disciplina);
     }
     
 }

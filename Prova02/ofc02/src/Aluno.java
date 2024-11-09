@@ -78,15 +78,17 @@ public class Aluno extends Pessoa {
     }
 
     public void ListarDisciplinasAluno(){
+        int i = 0;
         for (Disciplina disciplina : disciplinasAluno) {
-            System.out.println("- " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+            System.out.println("-Disciplina" + (i+1) + ": " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+            i++;
         }
     
     }
 
     public void ListarNotas(){
         for (Nota nota : notas) {
-            System.out.println("- " + nota.getDisciplinaNota() + "\n- " + nota.getValor() + "\n");
+            System.out.println("-Disciplina: " + nota.getDisciplinaNota() + "\n- " + nota.getValor() + "\n");
         }
     }
     
