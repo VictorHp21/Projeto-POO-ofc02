@@ -7,6 +7,8 @@ public class Main {
         List <Disciplina> disciplinas = new ArrayList<>();
         List <Turma> turmas = new ArrayList<>();
         gerenciaAluno gerenciaAlunoInstance = new gerenciaAluno();
+        gerenciaProfessor gerenciaProfessorInstance = new gerenciaProfessor();
+
 
         Disciplina disciplinateste = new Disciplina ("teste", 10, 1);
 
@@ -51,55 +53,98 @@ public class Main {
 
                 //listar disciplinas cadastradas
 
-                if(disciplinas.isEmpty()){
-                    System.out.println("Nenhuma disciplina encontrada");
-                }else{
-                    for(int i = 0; i < disciplinas.size(); i++){
-                        System.out.println(disciplinas.get(i).getNomeDisciplina());
+                    if(disciplinas.isEmpty()){
+                        System.out.println("Nenhuma disciplina encontrada");
+                    }else{
+                        for(int i = 0; i < disciplinas.size(); i++){
+                            System.out.println(disciplinas.get(i).getNomeDisciplina());
+                        }
                     }
-                }
 
                 System.out.println("Selecione digite o nome da disciplina para cadastrar o aluno");
                 String NomedisciplinaCadastro = s.next();
 
-                for(int i = 0; i < disciplinas.size(); i++){
-                    if(NomedisciplinaCadastro.equals(disciplinas.get(i).getNomeDisciplina())){
-            
-                        String DisciplinaNota = disciplinas.get(i).getNomeDisciplina();
+                    for(int i = 0; i < disciplinas.size(); i++){
+                        if(NomedisciplinaCadastro.equals(disciplinas.get(i).getNomeDisciplina())){
+                
+                            String DisciplinaNota = disciplinas.get(i).getNomeDisciplina();
 
-                        System.out.println("Digite o valor da nota do Aluno nesta disciplina");
-                        double valor = s.nextDouble();
+                            System.out.println("Digite o valor da nota do Aluno nesta disciplina");
+                            double valor = s.nextDouble();
 
-                        System.out.println("Digite a data da nota do Aluno nesta disciplina");
-                        String data = s.next();
+                            System.out.println("Digite a data da nota do Aluno nesta disciplina");
+                            String data = s.next();
 
-                        Nota nota = new Nota(DisciplinaNota, valor, data);
+                            Nota nota = new Nota(DisciplinaNota, valor, data);
+                            
+                            
+
+                            Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso, disciplinas);
+                            aluno.adicionarNota(nota);
+
+                            
+                            aluno.getDisciplinasAluno().add(disciplinas.get(i));
+
                         
                         
-
-                        Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso, disciplinas);
-                        aluno.adicionarNota(nota);
-
-                        
-                        aluno.getDisciplinasAluno().add(disciplinas.get(i));
-
-                       
-                       
-                        gerenciaAlunoInstance.cadastrarAluno(aluno);
-                    }
+                            gerenciaAlunoInstance.cadastrarAluno(aluno);
+                        }
                 }
 
-
-                
-                
-                
-
-
-                
-                
-                
                     break;
+
                 case 2:
+                System.out.println("Digite o nome do Professor que deseja cadastrar: ");
+                String nomeProfessor = s.next();
+
+                System.out.println("Digite a data de nascimento do Professor");
+                String dataNascimentoProfessor = s.next();
+
+                System.out.println("Digite o telefone do Professor");
+                long telefoneProfessor = s.nextLong();
+
+                System.out.println("Digite o endereço do Professor");
+                System.out.println("Rua:");
+                String ruaProfessor = s.next();
+                System.out.println("Numero:");
+                int numeroProfessor = s.nextInt();
+                System.out.println("Bairro:");
+                String bairroProfessor = s.next();
+
+                Endereco enderecoProfessor = new Endereco(ruaProfessor, numeroProfessor, bairroProfessor);
+
+                System.out.println("Digite a area de formacao do Professor");
+                String areaFormacao = s.next();
+                
+                System.out.println("Digite o ano de admissao do Professor");
+                int anoAdmissao = s.nextInt();                
+
+                System.out.println("Digite o email do Professor");
+                String email = s.next();
+
+                System.out.println("Quais diciplinas o professor leciona?");
+
+                //listar disciplinas cadastradas
+                System.out.println("As diciplinas ja cadstradas sao: ");
+                    if(disciplinas.isEmpty()){
+                        System.out.println("Nenhuma disciplina encontrada");
+                    }else{
+                        for(int i = 0; i < disciplinas.size(); i++){
+                            System.out.println(disciplinas.get(i).getNomeDisciplina());
+                        }
+                    }
+                System.out.println("Selecione digite o nome da disciplina para cadastrar o professor");
+                String NomedisciplinaProf = s.next();
+
+                    for(int i = 0; i < disciplinas.size(); i++){
+                        if(NomedisciplinaProf.equals(disciplinas.get(i).getNomeDisciplina())){
+                            Disciplina disciplina = disciplinas.get(i);
+                            Professor professor = new Professor (nomeProfessor, dataNascimentoProfessor, telefoneProfessor, enderecoProfessor, areaFormacao, anoAdmissao, email, disciplinas);
+                            professor.getDisciplinas().add(disciplina);
+                            gerenciaProfessorInstance.cadastrarProfessor(professor);
+                        }
+                }
+
 
                     break;
                 case 3:

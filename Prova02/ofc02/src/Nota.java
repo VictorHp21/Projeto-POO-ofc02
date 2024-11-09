@@ -12,6 +12,9 @@ public class Nota {
 
 
     //metodos getters e setters
+    public String getDisciplinaNota() {
+        return DisciplinaNota;
+    }
     public double getValor()
     {
         return valor;

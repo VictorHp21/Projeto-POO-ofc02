@@ -15,6 +15,7 @@ public class Professor extends Pessoa{
     }
     
 
+
     //metodos getters e setters
     public int getAnoAdmissao(){
         return AnoAdmissao;
@@ -42,6 +43,15 @@ public class Professor extends Pessoa{
 
     public void setAreaDeFormacao(String areaDeFormacao) {
         this.areaDeFormacao = areaDeFormacao;
+    }
+
+    //outros metodos
+
+    public void ListarDisciplinasProfessor(){
+        for (Disciplina disciplina : disciplinas) {
+            System.out.println("- " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+        }
+    
     }
     
 }

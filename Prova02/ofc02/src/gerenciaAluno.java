@@ -20,9 +20,11 @@ public  class gerenciaAluno implements igerenciadorCadastroAluno{
             System.out.println("Matricula: " + aluno.getMatricula());
             System.out.println("Data de Nascimento: " + aluno.getDataNascimento());
             System.out.println("Ano de ingresso: " + aluno.getAnoIngresso());
-            System.out.println("Disciplinas: " + aluno.getDisciplinasAluno());
+            System.out.println("Disciplinas: ");
+            aluno.ListarDisciplinasAluno();
           
-            System.out.println("Notas: " + aluno.getNotas());
+            System.out.println("Notas: " );
+            aluno.ListarNotas();
             System.out.println("Telefone: " + aluno.getTelefone());
             System.out.println("Endereço: " );
             aluno.getEndereco();

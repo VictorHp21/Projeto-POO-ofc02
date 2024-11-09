@@ -60,6 +60,11 @@ public class Aluno extends Pessoa {
         this.notas = notas;
     }  
 
+    public List<Disciplina> getDisciplinasAluno() {
+        return this.disciplinasAluno;
+    }
+
+    //outros metodos
 
     //calcular média
 
@@ -72,8 +77,17 @@ public class Aluno extends Pessoa {
         return media;
     }
 
-    public List<Disciplina> getDisciplinasAluno(){
-        return this.disciplinasAluno;
+    public void ListarDisciplinasAluno(){
+        for (Disciplina disciplina : disciplinasAluno) {
+            System.out.println("- " + disciplina.getNomeDisciplina() + "\n- " + disciplina.getCodigo() + "\n- " + disciplina.getCargaHoraria() + "\n");
+        }
+    
+    }
+
+    public void ListarNotas(){
+        for (Nota nota : notas) {
+            System.out.println("- " + nota.getDisciplinaNota() + "\n- " + nota.getValor() + "\n");
+        }
     }
     
 }
