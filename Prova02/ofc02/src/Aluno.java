@@ -94,7 +94,7 @@ public class Aluno extends Pessoa {
 
     public void ListarNotas(){
         for (Nota nota : notas) {
-            System.out.println("-Disciplina: " + nota.getDisciplinaNota() + "\n- " + nota.getValor() + "\n");
+            System.out.println("-Disciplina: " + nota.getDisciplinaNota() + "\n- " + nota.getValor() + "\n" + "-Data: " + nota.getData());
         }
     }
     

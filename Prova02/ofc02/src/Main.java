@@ -14,12 +14,16 @@ public class Main {
             Endereco enderecoteste = new Endereco("avp", 230, "centro");
             //aluno teste
             Aluno alunoTeste = new Aluno("v", "21", 56, enderecoteste, 2, 2001);
+           
             //Professor teste
             Professor professorTeste = new Professor("pedro", "2020", 456, enderecoteste, "mat", 0, "emailteste");
 
 
             //disciplinateste
             Disciplina disciplinateste = new Disciplina ("teste", 10, 1);
+            alunoTeste.adicionarDisciplina(disciplinateste);
+
+            gerenciaAlunoInstance.cadastrarAluno(alunoTeste);
             //turma teste
             Turma turmateste = new Turma(1);
             turmateste.adicionarDisciplina(disciplinateste);
@@ -275,6 +279,55 @@ public class Main {
 
                     break;
                 case 5:
+                //inserir nota
+
+                System.out.println("Qual aluno deseja inserir uma nota?");
+                gerenciaAlunoInstance.listarAlunos();
+
+                System.out.println("Digite o nome do aluno para inserir uma nota");
+                String NomealunoNota = s.next();
+
+                    for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
+                        if(NomealunoNota.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
+                            System.out.println("Qual disciplina deseja inserir uma nota?");
+                            //disciplinas da lista do aluno
+                            gerenciaAlunoInstance.getAlunosCadastrados().get(i).ListarDisciplinasAluno();
+
+                            System.out.println("Digite o codigo da disciplina");
+                            int codigodisciplina = s.nextInt();
+
+                                for (Disciplina disciplinasAluno : gerenciaAlunoInstance.getAlunosCadastrados().get(i).getDisciplinasAluno()) {
+                                    if (disciplinasAluno.getCodigo() == codigodisciplina) {
+                                        // código encontrado, faça algo aqui
+                                        System.out.println("Digite a nota: ");
+                                        double valornotaAluno = s.nextInt();
+                                        System.out.println("Digite a data da nota: ");
+                                        String datanota = s.next();
+
+                                        String DisciplinaNota = disciplinasAluno.getNomeDisciplina();
+
+                                        Nota notaAluno = new Nota(DisciplinaNota, valornotaAluno, datanota);
+
+                                        //adicionar essa nota ao aluno encontrado
+
+                                        gerenciaAlunoInstance.getAlunosCadastrados().get(i).adicionarNota(notaAluno);
+
+                                        
+                                        break;
+                                    } else {
+                                        System.out.println("Disciplina não encontrada para este aluno");
+                                        break;
+                                    }
+                                }
+                            
+
+
+                            } else {
+                                System.out.println("Aluno não encontrado");
+                            }
+
+              }
+
 
                     break;
                 case 6:
