@@ -19,6 +19,9 @@ public class Professor extends Pessoa{
 
 
     //metodos getters e setters
+    public String getNomeProfessor(){
+        return getNome();
+    }
     public int getAnoAdmissao(){
         return AnoAdmissao;
     }

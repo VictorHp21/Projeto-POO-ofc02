@@ -51,4 +51,16 @@ public class Turma {
     public void adicionarProfessor(Professor professor) {
         this.professor = professor;
     }
+
+    //metodo listar alunos turma
+
+    public void listarAlunosTurma() {
+        int i = 0;
+        for (Aluno aluno : alunosTurma) {
+
+            System.out.println("Nome aluno" + (i+1) + ": " + aluno.getNome());
+            i++;
+        }
+
+    }
 }

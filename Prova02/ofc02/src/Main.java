@@ -9,10 +9,26 @@ public class Main {
         gerenciaAluno gerenciaAlunoInstance = new gerenciaAluno();
         gerenciaProfessor gerenciaProfessorInstance = new gerenciaProfessor();
 
+            //testes
+            //endereco teste
+            Endereco enderecoteste = new Endereco("avp", 230, "centro");
+            //aluno teste
+            Aluno alunoTeste = new Aluno("v", "21", 56, enderecoteste, 2, 2001);
+            //Professor teste
+            Professor professorTeste = new Professor("pedro", "2020", 456, enderecoteste, "mat", 0, "emailteste");
 
-        Disciplina disciplinateste = new Disciplina ("teste", 10, 1);
 
-        disciplinas.add(disciplinateste);
+            //disciplinateste
+            Disciplina disciplinateste = new Disciplina ("teste", 10, 1);
+            //turma teste
+            Turma turmateste = new Turma(1);
+            turmateste.adicionarDisciplina(disciplinateste);
+            turmateste.adcAlunoTurma(alunoTeste);
+            turmateste.adicionarProfessor(professorTeste);
+
+            turmas.add(turmateste);
+
+            disciplinas.add(disciplinateste);
 
         int opcao = 0;
         Scanner s = new Scanner(System.in);
@@ -79,7 +95,7 @@ public class Main {
                             
                             
 
-                            Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso, disciplinas);
+                            Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso);
                             aluno.adicionarNota(nota);
 
                             
@@ -283,10 +299,11 @@ public class Main {
                 case 9:
                 //listar turmas
                 for (int i = 0; i < turmas.size(); i++) {
-                    System.out.println("Nome da turma: " + turmas.get(i).getNomeTurma());
-                    System.out.println("Professor: " + turmas.get(i).getProfessor());
-                    System.out.println("Disciplina: " + turmas.get(i).getDisciplina());
-                    System.out.println("Alunos: " + turmas.get(i).getAlunos());
+                    System.out.println("Codigo da turma: " + turmas.get(i).getCodigoTurma());
+                    System.out.println("Professor: " + turmas.get(i).getProfessor().getNomeProfessor());
+                    System.out.println("Disciplina: " + turmas.get(i).getDisciplina().getNomeDisciplina());
+                    System.out.println(" ---- Alunos Turma ----\n" );
+                    turmas.get(i).listarAlunosTurma();
                 }
 
                     break;

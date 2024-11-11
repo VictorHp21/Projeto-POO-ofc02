@@ -7,13 +7,19 @@ public class Aluno extends Pessoa {
     private List<Nota> notas;
     private List<Disciplina> disciplinasAluno;
 
-    public Aluno(String nome, String DataNascimento, long telefone, Endereco endereco, long matricula, int anoIngresso, List<Disciplina> diciplinasAluno) {
+    public Aluno(String nome, String DataNascimento, long telefone, Endereco endereco, long matricula, int anoIngresso) {
         super(nome, DataNascimento, telefone, endereco);
         this.matricula = matricula;
         this.anoIngresso = anoIngresso;
          this.notas = new ArrayList<>();
          this.disciplinasAluno = new ArrayList<>();
         
+    }
+
+    //metodo adcionar disciplina
+
+    public void adicionarDisciplina(Disciplina disciplina) {
+        this.disciplinasAluno.add(disciplina);
     }
 
     //metodo adicionar nota
