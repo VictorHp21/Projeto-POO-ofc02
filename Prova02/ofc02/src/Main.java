@@ -49,240 +49,240 @@ public class Main {
             System.out.println("Escolha uma opção: ");
             opcao = s.nextInt();
             switch(opcao){
-                case 1:
-                System.out.println("Digite o nome do Aluno");    
-                String nome = s.next();
+                    case 1:
+                    System.out.println("Digite o nome do Aluno");    
+                    String nome = s.next();
 
-                System.out.println("Digite a data de nascimento do Aluno");
-                String dataNascimento = s.next();
+                    System.out.println("Digite a data de nascimento do Aluno");
+                    String dataNascimento = s.next();
 
-                System.out.println("Digite o telefone do Aluno");
-                long telefone = s.nextLong();
+                    System.out.println("Digite o telefone do Aluno");
+                    long telefone = s.nextLong();
 
-                System.out.println("Digite o endereço do Aluno");
-                System.out.println("Rua:");
-                String rua = s.next();
-                System.out.println("Numero:");
-                int numero = s.nextInt();
-                System.out.println("Bairro:");
-                String bairro = s.next();
+                    System.out.println("Digite o endereço do Aluno");
+                    System.out.println("Rua:");
+                    String rua = s.next();
+                    System.out.println("Numero:");
+                    int numero = s.nextInt();
+                    System.out.println("Bairro:");
+                    String bairro = s.next();
 
-                Endereco endereco = new Endereco(rua, numero, bairro);
+                    Endereco endereco = new Endereco(rua, numero, bairro);
 
 
-                System.out.println("Digite a matricula do Aluno");
-                long matricula = s.nextLong();
+                    System.out.println("Digite a matricula do Aluno");
+                    long matricula = s.nextLong();
 
-                System.out.println("Digite o ano de ingresso do Aluno");
-                int anoIngresso = s.nextInt();
+                    System.out.println("Digite o ano de ingresso do Aluno");
+                    int anoIngresso = s.nextInt();
 
-                System.out.println("Em quais diciplinas o aluno será cadastrado?");
+                    System.out.println("Em quais diciplinas o aluno será cadastrado?");
 
-                //listar disciplinas cadastradas
+                    //listar disciplinas cadastradas
 
-                    if(disciplinas.isEmpty()){
-                        System.out.println("Nenhuma disciplina encontrada");
-                    }else{
+                        if(disciplinas.isEmpty()){
+                            System.out.println("Nenhuma disciplina encontrada");
+                        }else{
+                            for(int i = 0; i < disciplinas.size(); i++){
+                                System.out.println(disciplinas.get(i).getNomeDisciplina());
+                            }
+                        }
+
+                    System.out.println("Selecione digite o nome da disciplina para cadastrar o aluno");
+                    String NomedisciplinaCadastro = s.next();
+
                         for(int i = 0; i < disciplinas.size(); i++){
-                            System.out.println(disciplinas.get(i).getNomeDisciplina());
-                        }
+                            if(NomedisciplinaCadastro.equals(disciplinas.get(i).getNomeDisciplina())){
+                    
+                                String DisciplinaNota = disciplinas.get(i).getNomeDisciplina();
+
+                                System.out.println("Digite o valor da nota do Aluno nesta disciplina");
+                                double valor = s.nextDouble();
+
+                                System.out.println("Digite a data da nota do Aluno nesta disciplina");
+                                String data = s.next();
+
+                                Nota nota = new Nota(DisciplinaNota, valor, data);
+                                
+                                
+
+                                Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso);
+                                aluno.adicionarNota(nota);
+
+                                
+                                aluno.getDisciplinasAluno().add(disciplinas.get(i));
+
+                                disciplinas.get(i).adicionarAluno(aluno);
+
+                            
+                            
+                                gerenciaAlunoInstance.cadastrarAluno(aluno);
+                            } else {
+                                System.out.println("Error: Disciplina nao encontrada");
+                            }
                     }
-
-                System.out.println("Selecione digite o nome da disciplina para cadastrar o aluno");
-                String NomedisciplinaCadastro = s.next();
-
-                    for(int i = 0; i < disciplinas.size(); i++){
-                        if(NomedisciplinaCadastro.equals(disciplinas.get(i).getNomeDisciplina())){
-                
-                            String DisciplinaNota = disciplinas.get(i).getNomeDisciplina();
-
-                            System.out.println("Digite o valor da nota do Aluno nesta disciplina");
-                            double valor = s.nextDouble();
-
-                            System.out.println("Digite a data da nota do Aluno nesta disciplina");
-                            String data = s.next();
-
-                            Nota nota = new Nota(DisciplinaNota, valor, data);
-                            
-                            
-
-                            Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso);
-                            aluno.adicionarNota(nota);
-
-                            
-                            aluno.getDisciplinasAluno().add(disciplinas.get(i));
-
-                            disciplinas.get(i).adicionarAluno(aluno);
-
-                        
-                        
-                            gerenciaAlunoInstance.cadastrarAluno(aluno);
-                        } else {
-                            System.out.println("Error: Disciplina nao encontrada");
-                        }
-                }
 
                     break;
 
                 case 2:
-                System.out.println("Digite o nome do Professor que deseja cadastrar: ");
-                String nomeProfessor = s.next();
+                    System.out.println("Digite o nome do Professor que deseja cadastrar: ");
+                    String nomeProfessor = s.next();
 
-                System.out.println("Digite a data de nascimento do Professor");
-                String dataNascimentoProfessor = s.next();
+                    System.out.println("Digite a data de nascimento do Professor");
+                    String dataNascimentoProfessor = s.next();
 
-                System.out.println("Digite o telefone do Professor");
-                long telefoneProfessor = s.nextLong();
+                    System.out.println("Digite o telefone do Professor");
+                    long telefoneProfessor = s.nextLong();
 
-                System.out.println("Digite o endereço do Professor");
-                System.out.println("Rua:");
-                String ruaProfessor = s.next();
-                System.out.println("Numero:");
-                int numeroProfessor = s.nextInt();
-                System.out.println("Bairro:");
-                String bairroProfessor = s.next();
+                    System.out.println("Digite o endereço do Professor");
+                    System.out.println("Rua:");
+                    String ruaProfessor = s.next();
+                    System.out.println("Numero:");
+                    int numeroProfessor = s.nextInt();
+                    System.out.println("Bairro:");
+                    String bairroProfessor = s.next();
 
-                Endereco enderecoProfessor = new Endereco(ruaProfessor, numeroProfessor, bairroProfessor);
+                    Endereco enderecoProfessor = new Endereco(ruaProfessor, numeroProfessor, bairroProfessor);
 
-                System.out.println("Digite a area de formacao do Professor");
-                String areaFormacao = s.next();
-                
-                System.out.println("Digite o ano de admissao do Professor");
-                int anoAdmissao = s.nextInt();                
+                    System.out.println("Digite a area de formacao do Professor");
+                    String areaFormacao = s.next();
+                    
+                    System.out.println("Digite o ano de admissao do Professor");
+                    int anoAdmissao = s.nextInt();                
 
-                System.out.println("Digite o email do Professor");
-                String email = s.next();
+                    System.out.println("Digite o email do Professor");
+                    String email = s.next();
 
-                System.out.println("Quais diciplinas o professor leciona?");
+                    System.out.println("Quais diciplinas o professor leciona?");
 
-                //listar disciplinas cadastradas
-                System.out.println("As diciplinas ja cadstradas sao: ");
-                    if(disciplinas.isEmpty()){
-                        System.out.println("Nenhuma disciplina encontrada");
-                    }else{
+                    //listar disciplinas cadastradas
+                    System.out.println("As diciplinas ja cadstradas sao: ");
+                        if(disciplinas.isEmpty()){
+                            System.out.println("Nenhuma disciplina encontrada");
+                        }else{
+                            for(int i = 0; i < disciplinas.size(); i++){
+                                System.out.println(disciplinas.get(i).getNomeDisciplina());
+                            }
+                        }
+                    System.out.println("Selecione digite o nome da disciplina para cadastrar o professor");
+                    String NomedisciplinaProf = s.next();
+
                         for(int i = 0; i < disciplinas.size(); i++){
-                            System.out.println(disciplinas.get(i).getNomeDisciplina());
-                        }
+                            if(NomedisciplinaProf.equals(disciplinas.get(i).getNomeDisciplina())){
+                                Disciplina disciplina = disciplinas.get(i);
+
+                                Professor professor = new Professor (nomeProfessor, dataNascimentoProfessor, telefoneProfessor, enderecoProfessor, areaFormacao, anoAdmissao, email);
+
+                                professor.adicionarDisciplina(disciplina);
+                                
+                                gerenciaProfessorInstance.cadastrarProfessor(professor);
+                            } else {
+                                System.out.println("Error: Disciplina nao encontrada");
+                            }
                     }
-                System.out.println("Selecione digite o nome da disciplina para cadastrar o professor");
-                String NomedisciplinaProf = s.next();
-
-                    for(int i = 0; i < disciplinas.size(); i++){
-                        if(NomedisciplinaProf.equals(disciplinas.get(i).getNomeDisciplina())){
-                            Disciplina disciplina = disciplinas.get(i);
-
-                            Professor professor = new Professor (nomeProfessor, dataNascimentoProfessor, telefoneProfessor, enderecoProfessor, areaFormacao, anoAdmissao, email);
-
-                            professor.adicionarDisciplina(disciplina);
-                            
-                            gerenciaProfessorInstance.cadastrarProfessor(professor);
-                        } else {
-                            System.out.println("Error: Disciplina nao encontrada");
-                        }
-                }
 
 
                     break;
                 case 3:
-                System.out.println("Digite o nome da Disciplina que deseja cadastrar: ");
-                String nomeDisciplina = s.next();
+                    System.out.println("Digite o nome da Disciplina que deseja cadastrar: ");
+                    String nomeDisciplina = s.next();
 
-                System.out.println("Digite a carga horaria da Disciplina");
-                int cargaHoraria = s.nextInt();
+                    System.out.println("Digite a carga horaria da Disciplina");
+                    int cargaHoraria = s.nextInt();
 
-                System.out.println("Digite o codigo da Disciplina");
-                int codigo = s.nextInt();
+                    System.out.println("Digite o codigo da Disciplina");
+                    int codigo = s.nextInt();
 
-                Disciplina disciplina = new Disciplina (nomeDisciplina, cargaHoraria, codigo);
+                    Disciplina disciplina = new Disciplina (nomeDisciplina, cargaHoraria, codigo);
 
-                disciplinas.add(disciplina);
+                    disciplinas.add(disciplina);
 
                     break;
                 case 4:
-                System.out.println("Digite o codigo da Turma que deseja cadastrar: ");
-                int codigoTurma = s.nextInt();
+                    System.out.println("Digite o codigo da Turma que deseja cadastrar: ");
+                    int codigoTurma = s.nextInt();
 
-                Turma turma = new Turma (codigoTurma);
+                    Turma turma = new Turma (codigoTurma);
 
-                System.out.println("Das disciplinas cadastras qual sera lecionada pela Turma");
+                    System.out.println("Das disciplinas cadastras qual sera lecionada pela Turma");
 
-                //listar disciplinas cadastradas
-                System.out.println("As diciplinas ja cadstradas sao: ");
-                    if(disciplinas.isEmpty()){
-                        System.out.println("Nenhuma disciplina encontrada");
-                    }else{
-                        for(int i = 0; i < disciplinas.size(); i++){
-                            System.out.println(disciplinas.get(i).getNomeDisciplina());
+                    //listar disciplinas cadastradas
+                    System.out.println("As diciplinas ja cadstradas sao: ");
+                        if(disciplinas.isEmpty()){
+                            System.out.println("Nenhuma disciplina encontrada");
+                        }else{
+                            for(int i = 0; i < disciplinas.size(); i++){
+                                System.out.println(disciplinas.get(i).getNomeDisciplina());
+                            }
                         }
-                    }
 
-                System.out.println("Selecione digite o nome da disciplina para cadastrar a turma");
-                String NomedisciplinaTurma = s.next();
+                    System.out.println("Selecione digite o nome da disciplina para cadastrar a turma");
+                    String NomedisciplinaTurma = s.next();
 
-                  
                     
-                Disciplina disciplinaT = null; // Declaração fora do loop
+                        
+                    Disciplina disciplinaT = null; // Declaração fora do loop
 
-                for(int i = 0; i < disciplinas.size(); i++) {
-                    if(NomedisciplinaTurma.equals(disciplinas.get(i).getNomeDisciplina())) {
-                        disciplinaT = disciplinas.get(i); // Atribui o valor à variável
-                        turma.adicionarDisciplina(disciplinaT);
-                        break; // Sai do loop assim que encontrar
+                    for(int i = 0; i < disciplinas.size(); i++) {
+                        if(NomedisciplinaTurma.equals(disciplinas.get(i).getNomeDisciplina())) {
+                            disciplinaT = disciplinas.get(i); // Atribui o valor à variável
+                            turma.adicionarDisciplina(disciplinaT);
+                            break; // Sai do loop assim que encontrar
+                        }
                     }
-                }
+                    
+                    if(disciplinaT == null) {
+                        System.out.println("Error: Disciplina não encontrada");
+                    }
+                    
                 
-                if(disciplinaT == null) {
-                    System.out.println("Error: Disciplina não encontrada");
-                }
-                
-              
 
-                    System.out.println("Qual professor leciona na Turma?");
+                        System.out.println("Qual professor leciona na Turma?");
 
-                    //listar professores cadastrados
-                    System.out.println("Os professores ja cadastrados sao: ");
-                        if(gerenciaProfessorInstance.getProfessoresCadastrados().isEmpty()){
-                            System.out.println("Nenhum professor encontrado");
-                        }else{
-                            gerenciaProfessorInstance.listarProfessores();
-                        }
-
-                    System.out.println("Selecione digite o nome do professor para cadastrar a turma");
-                    String NomeprofessorTurma = s.next();
-
-                        for(int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++){
-                            if(NomeprofessorTurma.equals(gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNome())){
-                                Professor professorT = gerenciaProfessorInstance.getProfessoresCadastrados().get(i);
-                                turma.adicionarProfessor(professorT);
-                            } else {
-                                System.out.println("Error: Professor nao encontrado");
+                        //listar professores cadastrados
+                        System.out.println("Os professores ja cadastrados sao: ");
+                            if(gerenciaProfessorInstance.getProfessoresCadastrados().isEmpty()){
+                                System.out.println("Nenhum professor encontrado");
+                            }else{
+                                gerenciaProfessorInstance.listarProfessores();
                             }
-                        }
-                    System.out.println("Qual aluno deseja inserir na turma?");
 
-                    //listar alunos cadastrados
-                    System.out.println("Os alunos ja cadastrados sao: ");
-                        if(gerenciaAlunoInstance.getAlunosCadastrados().isEmpty()){
-                            System.out.println("Nenhum aluno encontrado");
-                        }else{
-                            gerenciaAlunoInstance.listarAlunos();
-                        }
+                        System.out.println("Selecione digite o nome do professor para cadastrar a turma");
+                        String NomeprofessorTurma = s.next();
 
-                    System.out.println("Digite o nome do aluno para cadastrar a turma");
-                    String NomealunoTurma = s.next();
-
-                        for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
-                            if(NomealunoTurma.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
-                                Aluno alunoT = gerenciaAlunoInstance.getAlunosCadastrados().get(i);
-                                turma.adcAlunoTurma(alunoT);
-                            } else {
-                                System.out.println("Error: Aluno nao encontrado");
+                            for(int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++){
+                                if(NomeprofessorTurma.equals(gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNome())){
+                                    Professor professorT = gerenciaProfessorInstance.getProfessoresCadastrados().get(i);
+                                    turma.adicionarProfessor(professorT);
+                                } else {
+                                    System.out.println("Error: Professor nao encontrado");
+                                }
                             }
-                        }
+                        System.out.println("Qual aluno deseja inserir na turma?");
 
-                       
+                        //listar alunos cadastrados
+                        System.out.println("Os alunos ja cadastrados sao: ");
+                            if(gerenciaAlunoInstance.getAlunosCadastrados().isEmpty()){
+                                System.out.println("Nenhum aluno encontrado");
+                            }else{
+                                gerenciaAlunoInstance.listarAlunos();
+                            }
 
-                        turmas.add(turma);
+                        System.out.println("Digite o nome do aluno para cadastrar a turma");
+                        String NomealunoTurma = s.next();
+
+                            for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
+                                if(NomealunoTurma.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
+                                    Aluno alunoT = gerenciaAlunoInstance.getAlunosCadastrados().get(i);
+                                    turma.adcAlunoTurma(alunoT);
+                                } else {
+                                    System.out.println("Error: Aluno nao encontrado");
+                                }
+                            }
+
+                        
+
+                            turmas.add(turma);
 
                         
 
@@ -290,52 +290,52 @@ public class Main {
                 case 5:
                 //inserir nota
 
-                System.out.println("Qual aluno deseja inserir uma nota?");
-                gerenciaAlunoInstance.listarAlunos();
+                    System.out.println("Qual aluno deseja inserir uma nota?");
+                    gerenciaAlunoInstance.listarAlunos();
 
-                System.out.println("Digite o nome do aluno para inserir uma nota");
-                String NomealunoNota = s.next();
+                    System.out.println("Digite o nome do aluno para inserir uma nota");
+                    String NomealunoNota = s.next();
 
-                    for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
-                        if(NomealunoNota.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
-                            System.out.println("Qual disciplina deseja inserir uma nota?");
-                            //disciplinas da lista do aluno
-                            gerenciaAlunoInstance.getAlunosCadastrados().get(i).ListarDisciplinasAluno();
+                        for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
+                            if(NomealunoNota.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
+                                System.out.println("Qual disciplina deseja inserir uma nota?");
+                                //disciplinas da lista do aluno
+                                gerenciaAlunoInstance.getAlunosCadastrados().get(i).ListarDisciplinasAluno();
 
-                            System.out.println("Digite o codigo da disciplina");
-                            int codigodisciplina = s.nextInt();
+                                System.out.println("Digite o codigo da disciplina");
+                                int codigodisciplina = s.nextInt();
 
-                                for (Disciplina disciplinasAluno : gerenciaAlunoInstance.getAlunosCadastrados().get(i).getDisciplinasAluno()) {
-                                    if (disciplinasAluno.getCodigo() == codigodisciplina) {
-                                        // código encontrado, faça algo aqui
-                                        System.out.println("Digite a nota: ");
-                                        double valornotaAluno = s.nextInt();
-                                        System.out.println("Digite a data da nota: ");
-                                        String datanota = s.next();
+                                    for (Disciplina disciplinasAluno : gerenciaAlunoInstance.getAlunosCadastrados().get(i).getDisciplinasAluno()) {
+                                        if (disciplinasAluno.getCodigo() == codigodisciplina) {
+                                            // código encontrado, faça algo aqui
+                                            System.out.println("Digite a nota: ");
+                                            double valornotaAluno = s.nextInt();
+                                            System.out.println("Digite a data da nota: ");
+                                            String datanota = s.next();
 
-                                        String DisciplinaNota = disciplinasAluno.getNomeDisciplina();
+                                            String DisciplinaNota = disciplinasAluno.getNomeDisciplina();
 
-                                        Nota notaAluno = new Nota(DisciplinaNota, valornotaAluno, datanota);
+                                            Nota notaAluno = new Nota(DisciplinaNota, valornotaAluno, datanota);
 
-                                        //adicionar essa nota ao aluno encontrado
+                                            //adicionar essa nota ao aluno encontrado
 
-                                        gerenciaAlunoInstance.getAlunosCadastrados().get(i).adicionarNota(notaAluno);
+                                            gerenciaAlunoInstance.getAlunosCadastrados().get(i).adicionarNota(notaAluno);
 
-                                        
-                                        break;
-                                    } else {
-                                        System.out.println("Disciplina não encontrada para este aluno");
-                                        break;
+                                            
+                                            break;
+                                        } else {
+                                            System.out.println("Disciplina não encontrada para este aluno");
+                                            break;
+                                        }
                                     }
+                                
+
+
+                                } else {
+                                    System.out.println("Aluno não encontrado");
                                 }
-                            
 
-
-                            } else {
-                                System.out.println("Aluno não encontrado");
-                            }
-
-              }
+                }
 
 
                     break;
@@ -351,89 +351,90 @@ public class Main {
                     break;
                 case 8:
                 //Listar disciplinas
-                for (int i = 0; i < disciplinas.size(); i++) {
-                    System.out.println("Nome da disciplina: " + disciplinas.get(i).getNomeDisciplina());
-                    System.out.println("Carga horaria: " + disciplinas.get(i).getCargaHoraria());
-                    System.out.println("Codigo: " + disciplinas.get(i).getCodigo());
+                    for (int i = 0; i < disciplinas.size(); i++) {
+                        System.out.println("Nome da disciplina: " + disciplinas.get(i).getNomeDisciplina());
+                        System.out.println("Carga horaria: " + disciplinas.get(i).getCargaHoraria());
+                        System.out.println("Codigo: " + disciplinas.get(i).getCodigo());
 
-                }
+                    }
                     break;
                 case 9:
                 //listar turmas
-                for (int i = 0; i < turmas.size(); i++) {
-                    System.out.println("Codigo da turma: " + turmas.get(i).getCodigoTurma());
-                    System.out.println("Professor: " + turmas.get(i).getProfessor().getNomeProfessor());
-                    System.out.println("Disciplina: " + turmas.get(i).getDisciplina().getNomeDisciplina());
-                    System.out.println(" ---- Alunos Turma ----\n" );
-                    turmas.get(i).listarAlunosTurma();
-                }
+                    for (int i = 0; i < turmas.size(); i++) {
+                        System.out.println("Codigo da turma: " + turmas.get(i).getCodigoTurma());
+                        System.out.println("Professor: " + turmas.get(i).getProfessor().getNomeProfessor());
+                        System.out.println("Disciplina: " + turmas.get(i).getDisciplina().getNomeDisciplina());
+                        System.out.println(" ---- Alunos Turma ----\n" );
+                        turmas.get(i).listarAlunosTurma();
+                    }
 
                     break;
                 case 10:
-                gerenciaAlunoInstance.ListarAlunosCompleto();
+                    gerenciaAlunoInstance.ListarAlunosCompleto();
 
                     break;
                 case 11:
 
-                if(gerenciaAlunoInstance.getAlunosCadastrados().isEmpty()){
-                    System.out.println("Nenhum aluno cadastrado");
-                } else if (gerenciaAlunoInstance.getAlunosCadastrados().size() == 1){
-                    System.out.println("Ha apenas um aluno cadastrado");
-                } else {
-                    System.out.println("Sao:" + gerenciaAlunoInstance.getAlunosCadastrados().size() + " alunos cadastrados");
-                }
+                    if(gerenciaAlunoInstance.getAlunosCadastrados().isEmpty()){
+                        System.out.println("Nenhum aluno cadastrado");
+                    } else if (gerenciaAlunoInstance.getAlunosCadastrados().size() == 1){
+                        System.out.println("Ha apenas um aluno cadastrado");
+                    } else {
+                        System.out.println("Sao:" + gerenciaAlunoInstance.getAlunosCadastrados().size() + " alunos cadastrados");
+                    }
 
                 
 
                     break;
                 case 12:
                 // aluno que possui a maior nota
-                System.out.println("Aluno com maior nota: " + gerenciaAlunoInstance.EncontrarAlunoMaiorNota().getNome());
-               
+                    System.out.println("Aluno com maior nota: " + gerenciaAlunoInstance.EncontrarAlunoMaiorNota().getNome());
+                
 
                     break;
                 case 13:
 
-                System.out.println("Deseja listar os alunos de qual disciplina? ");
+                    System.out.println("Deseja listar os alunos de qual disciplina? ");
 
-                if(disciplinas.isEmpty()){
-                    System.out.println("***ERRO***Nenhuma disciplina encontrada");
-                } else {
-                      //Listar disciplinas
-                 for (int i = 0; i < disciplinas.size(); i++) {
-                    System.out.println("Nome da disciplina: " + disciplinas.get(i).getNomeDisciplina());
-                    System.out.println("Carga horaria: " + disciplinas.get(i).getCargaHoraria());
-                    System.out.println("Codigo: " + disciplinas.get(i).getCodigo());
+                        if(disciplinas.isEmpty()){
+                            System.out.println("***ERRO***Nenhuma disciplina encontrada");
+                        } else {
+                            //Listar disciplinas
+                            for (int i = 0; i < disciplinas.size(); i++) {
+                                System.out.println("Nome da disciplina: " + disciplinas.get(i).getNomeDisciplina());
+                                System.out.println("Carga horaria: " + disciplinas.get(i).getCargaHoraria());
+                                System.out.println("Codigo: " + disciplinas.get(i).getCodigo());
 
-                     }
-                    System.out.println("Digite o codigo da disciplina");
-                    int codigodisciplina = s.nextInt();
+                                }
+                                System.out.println("Digite o codigo da disciplina");
+                                int codigodisciplina = s.nextInt();
 
-                        for (Disciplina disciplinasAluno : disciplinas) {
-                            if (disciplinasAluno.getCodigo() == codigodisciplina) {
-                                System.out.println("Alunos da disciplina: " + disciplinasAluno.getNomeDisciplina());
-                                disciplinasAluno.ListarAlunosDisciplina();
-                            }
+                                    for (Disciplina disciplinasAluno : disciplinas) {
+                                        if (disciplinasAluno.getCodigo() == codigodisciplina) {
+                                            System.out.println("Alunos da disciplina: " + disciplinasAluno.getNomeDisciplina());
+                                            disciplinasAluno.ListarAlunosDisciplina();
+                                        }
+                                    }
                         }
-                }
 
                     break;
                 case 14:
-                System.out.println("Deseja listar as turmas de qual professor? ");
+                    System.out.println("Deseja listar as turmas de qual professor? ");
 
-                if(gerenciaProfessorInstance.getProfessoresCadastrados().isEmpty()){
-                    System.out.println("***ERRO***Nenhum professor encontrado");
-                } else {
-                    gerenciaProfessorInstance.listarProfessores();
-                }
-                      System.out.println("Digite o nome do professor que deseja que sejam listadas suas turmas: ");
-                      String nomeprofessor = s.next();
+                            if(gerenciaProfessorInstance.getProfessoresCadastrados().isEmpty()){
+                        System.out.println("***ERRO***Nenhum professor encontrado");
+                         } else {
+                        gerenciaProfessorInstance.listarProfessores();
+                                }
 
-                      for (int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++) {
-                          if (gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNomeProfessor().equals(nomeprofessor)) {
-                              gerenciaProfessorInstance.getProfessoresCadastrados().get(i).ListarTurmasProfessor();
-                          }
-                      }
+                            System.out.println("Digite o nome do professor que deseja que sejam listadas suas turmas: ");
+                            String nomeprofessor = s.next();
+
+                            for (int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++) {
+                                if (gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNomeProfessor().equals(nomeprofessor)) {
+                                    gerenciaProfessorInstance.getProfessoresCadastrados().get(i).ListarTurmasProfessor();
+                                }
+                        }
                      
 
                     break;
@@ -449,6 +450,7 @@ public class Main {
 
 
     }
+
 
     public static void menu(){
         System.out.println("=================================================================================================\n");
