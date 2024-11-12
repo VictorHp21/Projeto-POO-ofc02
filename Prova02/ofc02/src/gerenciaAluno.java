@@ -22,15 +22,29 @@ public  class gerenciaAluno implements igerenciadorCadastroAluno{
             System.out.println("Ano de ingresso: " + aluno.getAnoIngresso());
             System.out.println("Disciplinas: ");
             aluno.ListarDisciplinasAluno();
-          
-            System.out.println("Notas: " );
-            aluno.ListarNotas();
-            System.out.println("Telefone: " + aluno.getTelefone());
             System.out.println("Endereço: " );
             aluno.getEndereco();
+            System.out.println("Telefone: " + aluno.getTelefone());
+          
+           
             System.out.println("=================================================================================================\n");
         }
         
+    }
+
+    public void ListarAlunosCompleto(){
+        for (Aluno aluno : alunosCadastrados) {
+            System.out.println("Nome: " + aluno.getNome());
+            System.out.println("Data de Nascimento: " + aluno.getDataNascimento());
+
+            System.out.println("Notas: " );
+            aluno.ListarNotas();
+
+            System.out.println("Média: " );
+            aluno.ExibirMedia();
+
+
+        }
     }
 
     public List<Aluno> getAlunosCadastrados() {

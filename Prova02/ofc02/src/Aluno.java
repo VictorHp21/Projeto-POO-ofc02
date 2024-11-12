@@ -74,13 +74,14 @@ public class Aluno extends Pessoa {
 
     //calcular média
 
-    public double calcularMedia(){
+    public void ExibirMedia(){
         double media = 0;
         for(Nota nota : this.notas){
             media += nota.getValor();
         }
         media /= this.notas.size();
-        return media;
+        System.out.println("Média: " + media);
+       
     }
 
     public void ListarDisciplinasAluno(){

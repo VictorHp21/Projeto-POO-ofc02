@@ -22,6 +22,8 @@ public class Main {
             //disciplinateste
             Disciplina disciplinateste = new Disciplina ("teste", 10, 1);
             alunoTeste.adicionarDisciplina(disciplinateste);
+            Nota notaTeste = new Nota("teste", 10, "2020");
+            alunoTeste.adicionarNota(notaTeste);
 
             gerenciaAlunoInstance.cadastrarAluno(alunoTeste);
             //turma teste
@@ -361,8 +363,12 @@ public class Main {
 
                     break;
                 case 10:
-
+                gerenciaAlunoInstance.ListarAlunosCompleto();
+                
                     break;
+                
+
+                    
                 case 11:
 
                     break;
