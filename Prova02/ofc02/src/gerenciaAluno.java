@@ -51,6 +51,23 @@ public  class gerenciaAluno implements igerenciadorCadastroAluno{
         return alunosCadastrados;
     }
 
+    //metodo para encontrar aluno com a maior nota
+    public Aluno EncontrarAlunoMaiorNota() {
+        Aluno alunoMaiorNota = null;
+        double maiorNota = 0;
+        for (Aluno aluno : alunosCadastrados) {
+            if (aluno.getNotas().size() > 0) {
+                if (aluno.getNotas().get(0).getValor() > maiorNota) {
+                    maiorNota = aluno.getNotas().get(0).getValor();
+                    alunoMaiorNota = aluno;
+                }
+            }
+        }
+        return alunoMaiorNota;
+    }
+
+  
+
 
    
     

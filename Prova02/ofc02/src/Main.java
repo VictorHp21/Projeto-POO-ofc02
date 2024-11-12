@@ -35,6 +35,8 @@ public class Main {
             turmas.add(turmateste);
 
             disciplinas.add(disciplinateste);
+            
+            disciplinateste.adicionarAluno(alunoTeste);
 
         int opcao = 0;
         Scanner s = new Scanner(System.in);
@@ -106,6 +108,8 @@ public class Main {
 
                             
                             aluno.getDisciplinasAluno().add(disciplinas.get(i));
+
+                            disciplinas.get(i).adicionarAluno(aluno);
 
                         
                         
@@ -364,18 +368,51 @@ public class Main {
                     break;
                 case 10:
                 gerenciaAlunoInstance.ListarAlunosCompleto();
-                
-                    break;
-                
 
-                    
+                    break;
                 case 11:
+
+                if(gerenciaAlunoInstance.getAlunosCadastrados().isEmpty()){
+                    System.out.println("Nenhum aluno cadastrado");
+                } else if (gerenciaAlunoInstance.getAlunosCadastrados().size() == 1){
+                    System.out.println("Ha apenas um aluno cadastrado");
+                } else {
+                    System.out.println("Sao:" + gerenciaAlunoInstance.getAlunosCadastrados().size() + " alunos cadastrados");
+                }
+
+                
 
                     break;
                 case 12:
+                // aluno que possui a maior nota
+                System.out.println("Aluno com maior nota: " + gerenciaAlunoInstance.EncontrarAlunoMaiorNota().getNome());
+               
 
                     break;
                 case 13:
+
+                System.out.println("Deseja listar os alunos de qual disciplina? ");
+
+                if(disciplinas.isEmpty()){
+                    System.out.println("***ERRO***Nenhuma disciplina encontrada");
+                } else {
+                      //Listar disciplinas
+                 for (int i = 0; i < disciplinas.size(); i++) {
+                    System.out.println("Nome da disciplina: " + disciplinas.get(i).getNomeDisciplina());
+                    System.out.println("Carga horaria: " + disciplinas.get(i).getCargaHoraria());
+                    System.out.println("Codigo: " + disciplinas.get(i).getCodigo());
+
+                     }
+                    System.out.println("Digite o codigo da disciplina");
+                    int codigodisciplina = s.nextInt();
+
+                        for (Disciplina disciplinasAluno : disciplinas) {
+                            if (disciplinasAluno.getCodigo() == codigodisciplina) {
+                                System.out.println("Alunos da disciplina: " + disciplinasAluno.getNomeDisciplina());
+                                disciplinasAluno.ListarAlunosDisciplina();
+                            }
+                        }
+                }
 
                     break;
                 case 14:

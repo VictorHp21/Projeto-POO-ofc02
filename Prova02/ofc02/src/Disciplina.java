@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Disciplina {
@@ -5,6 +6,7 @@ public class Disciplina {
     private int cargaHoraria;
     private int codigo;
     private List<Professor> professoresDisciplina;
+    private List<Aluno> alunoscadastradosDisciplina;
 
 
     public Disciplina(String nomeDisciplina, int cargaHoraria, int codigo)
@@ -12,6 +14,25 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
         this.cargaHoraria = cargaHoraria;
         this.codigo = codigo;
+        this.professoresDisciplina = new ArrayList<>();
+        this.alunoscadastradosDisciplina = new ArrayList<>();
+    }
+
+    //metodo adicionar professor
+    public void adicionarProfessor(Professor professor) {
+        professoresDisciplina.add(professor);
+    }
+
+    //metodo adicionar aluno
+    public void adicionarAluno(Aluno aluno) {
+        alunoscadastradosDisciplina.add(aluno);
+    }
+
+    //listar alunos da dsiciplina
+    public void ListarAlunosDisciplina() {
+        for (Aluno aluno : alunoscadastradosDisciplina) {
+            System.out.println("Nome: " + aluno.getNome() + "\n");
+        }
     }
 
     
