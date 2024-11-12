@@ -225,9 +225,9 @@ public class Main {
 
                     for(int i = 0; i < disciplinas.size(); i++) {
                         if(NomedisciplinaTurma.equals(disciplinas.get(i).getNomeDisciplina())) {
-                            disciplinaT = disciplinas.get(i); // Atribui o valor à variável
+                            disciplinaT = disciplinas.get(i);
                             turma.adicionarDisciplina(disciplinaT);
-                            break; // Sai do loop assim que encontrar
+                            break; 
                         }
                     }
                     
