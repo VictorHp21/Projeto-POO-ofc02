@@ -6,6 +6,7 @@ public class Professor extends Pessoa{
     private int AnoAdmissao;
     private String email;
     private List<Disciplina> disciplinasProfessor;
+    private List<Turma> turmasProfessor;
 
     public Professor(String nome, String DataNascimento, long telefone, Endereco endereco, String areaDeFormacao, int anoAdmissao, String email) {
         super(nome, DataNascimento, telefone, endereco);
@@ -13,7 +14,25 @@ public class Professor extends Pessoa{
         this.AnoAdmissao = anoAdmissao;
         this.email = email;
         this.disciplinasProfessor = new ArrayList<>();
+        this.turmasProfessor = new ArrayList<>();
        
+    }
+
+    //metodo adicionar turma
+    public void adicionarTurma(Turma turma){
+        turmasProfessor.add(turma);
+    }
+
+    //metodo listar turmas prof
+    public void ListarTurmasProfessor(){
+        int i = 0;
+        for (Turma turma : turmasProfessor) {
+            System.out.println("-Turma" + (i+1) + ": " + turma.getCodigoTurma() + "\n- "  + " Alunos nesta turma: " + "\n");
+            turma.listarAlunosTurma();
+            System.out.println("\nDisciplina");
+            turma.mostrarNomeDisciplina();
+            i++;
+        }
     }
     
 

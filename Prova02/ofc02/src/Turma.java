@@ -63,4 +63,10 @@ public class Turma {
         }
 
     }
+
+    //metodo mostrar nome disciplina
+
+    public void mostrarNomeDisciplina() {
+        System.out.println("Disciplina: " + disciplina.getNomeDisciplina());
+    }
 }

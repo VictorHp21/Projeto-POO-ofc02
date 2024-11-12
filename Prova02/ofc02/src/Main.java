@@ -38,6 +38,9 @@ public class Main {
             
             disciplinateste.adicionarAluno(alunoTeste);
 
+            professorTeste.adicionarTurma(turmateste);
+            gerenciaProfessorInstance.cadastrarProfessor(professorTeste);
+
         int opcao = 0;
         Scanner s = new Scanner(System.in);
 
@@ -416,6 +419,22 @@ public class Main {
 
                     break;
                 case 14:
+                System.out.println("Deseja listar as turmas de qual professor? ");
+
+                if(gerenciaProfessorInstance.getProfessoresCadastrados().isEmpty()){
+                    System.out.println("***ERRO***Nenhum professor encontrado");
+                } else {
+                    gerenciaProfessorInstance.listarProfessores();
+                }
+                      System.out.println("Digite o nome do professor que deseja que sejam listadas suas turmas: ");
+                      String nomeprofessor = s.next();
+
+                      for (int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++) {
+                          if (gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNomeProfessor().equals(nomeprofessor)) {
+                              gerenciaProfessorInstance.getProfessoresCadastrados().get(i).ListarTurmasProfessor();
+                          }
+                      }
+                     
 
                     break;
                 case 15:
@@ -423,7 +442,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opção inválida");
-                    menu();
+                    break;
             }
         }
        
