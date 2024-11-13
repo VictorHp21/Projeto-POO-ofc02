@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,8 @@ public class Main {
         List <Turma> turmas = new ArrayList<>();
         gerenciaAluno gerenciaAlunoInstance = new gerenciaAluno();
         gerenciaProfessor gerenciaProfessorInstance = new gerenciaProfessor();
+
+        boolean tentativa = false;
 
             //testes
             //endereco teste
@@ -50,31 +53,164 @@ public class Main {
             opcao = s.nextInt();
             switch(opcao){
                     case 1:
-                    System.out.println("Digite o nome do Aluno");    
-                    String nome = s.next();
+                        String nomeAluno = null;
+                        System.out.println("Digite o nome do Aluno");    
+                        String nome = s.next();
 
+                                while (tentativa == false){
+                                        try {
+                                            if(!nome.matches("-?\\d+(\\.\\d+)?")) //se não for um número
+                                            {
+                                                nomeAluno = nome;
+                                                tentativa = true;
+                                                
+                                            } else {
+                                                throw new Exception("Erro: Nome invalido");
+                                                                                
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println(e.getMessage());
+                                            System.out.println("Digite o nome do Aluno novamente: ");
+                                            nome = s.next(); // ler novamente o nome
+                                            tentativa = false;
+                                        }
+                                }
+                       
+                    String dataAluno = null;
                     System.out.println("Digite a data de nascimento do Aluno");
                     String dataNascimento = s.next();
 
-                    System.out.println("Digite o telefone do Aluno");
-                    long telefone = s.nextLong();
+                                tentativa = false;
+                                while (tentativa == false){
+                                    try {
+                                        if(isNumeric(dataNascimento) == true) //se for numerico
+                                        {
+                                            dataAluno = dataNascimento;
+                                            tentativa = true;
+
+                                        } else {
+                                            
+                                            throw new Exception("Erro: Data invalida");
+                                                                            
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                        System.out.println("Digite a data de nascimento do Aluno novamente: ");
+                                        dataNascimento = s.next(); // ler novamente a data
+                                        tentativa = false;
+                                    }
+                                } 
+                                    
+                                
+
+                               
+                    long telefoneAluno = 0;            
+                       System.out.println("Digite o telefone do Aluno");
+                            while (true) {
+                                try {
+                                    telefoneAluno = s.nextLong();
+                                    break;
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Erro: Telefone inválido. Por favor, digite novamente.");
+                                    s.next(); 
+                                }
+                            }
 
                     System.out.println("Digite o endereço do Aluno");
+
                     System.out.println("Rua:");
                     String rua = s.next();
+                    String ruaAluno = null;
+
+                        tentativa = false;
+                            while (tentativa == false){
+                                try {
+                                    if(!rua.matches("-?\\d+(\\.\\d+)?")) //se não for um número
+                                    {
+                                        ruaAluno = rua;
+                                        tentativa = true;
+                                        
+                                    } else {
+                                        throw new Exception("Erro: Rua invalida");
+                                                                        
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                    System.out.println("Digite a rua do Aluno novamente: ");
+                                    rua = s.next(); // ler novamente o nome
+                                    tentativa = false;
+                                }
+                        }
+
+                   
+                   
+                    int numeroAluno = 0;
                     System.out.println("Numero:");
-                    int numero = s.nextInt();
+                        while (true) {
+                            try {
+                                numeroAluno = s.nextInt();
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Erro: Numero inválido. Por favor, digite novamente.");
+                                s.next(); // limpar o buffer de entrada
+                            }
+                        }
+                   
+
                     System.out.println("Bairro:");
                     String bairro = s.next();
+                    String bairroAluno = null;
 
-                    Endereco endereco = new Endereco(rua, numero, bairro);
+                        while (tentativa == false){
+                            try {
+                                if(!bairro.matches("-?\\d+(\\.\\d+)?")) //se não for um número
+                                {
+                                    bairroAluno = bairro;
+                                    tentativa = true;
+                                    
+                                } else {
+                                    throw new Exception("Erro: Bairro invalido");
+                                                                    
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                                System.out.println("Digite o bairro do Aluno novamente: ");
+                                bairro = s.next(); // ler novamente o nome
+                                tentativa = false;
+                            }
+                    }
 
 
+                    Endereco endereco = new Endereco(ruaAluno, numeroAluno, bairroAluno);
+
+
+                    
+
+                    long matriculaAluno = 0;            
                     System.out.println("Digite a matricula do Aluno");
-                    long matricula = s.nextLong();
+                         while (true) {
+                             try {
+                                matriculaAluno = s.nextLong();
+                                 break;
+                             } catch (InputMismatchException e) {
+                                 System.out.println("Erro: Matricula inválida. Por favor, digite novamente.");
+                                 s.next(); 
+                             }
+                         }
+
 
                     System.out.println("Digite o ano de ingresso do Aluno");
-                    int anoIngresso = s.nextInt();
+                    int anoIngresso = 0;
+
+                    while (true) {
+                        try {
+                            anoIngresso = s.nextInt();
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Erro: Ano inválido. Por favor, digite novamente.");
+                            s.next(); 
+                        }
+                    }
 
                     System.out.println("Em quais diciplinas o aluno será cadastrado?");
 
@@ -82,6 +218,7 @@ public class Main {
 
                         if(disciplinas.isEmpty()){
                             System.out.println("Nenhuma disciplina encontrada");
+                            menu();
                         }else{
                             for(int i = 0; i < disciplinas.size(); i++){
                                 System.out.println(disciplinas.get(i).getNomeDisciplina());
@@ -97,16 +234,47 @@ public class Main {
                                 String DisciplinaNota = disciplinas.get(i).getNomeDisciplina();
 
                                 System.out.println("Digite o valor da nota do Aluno nesta disciplina");
-                                double valor = s.nextDouble();
+                                double valor = 0;
+                                        while (true) {
+                                            try {
+                                                valor = s.nextDouble();
+                                                break;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Erro: Valor inválido. Por favor, digite novamente.");
+                                                s.next(); 
+                                            }
+                                        }
 
                                 System.out.println("Digite a data da nota do Aluno nesta disciplina");
                                 String data = s.next();
+                                String dataNota = null;
 
-                                Nota nota = new Nota(DisciplinaNota, valor, data);
+                                tentativa = false;
+                                while (tentativa == false){
+                                    try {
+                                        if(isNumeric(dataNascimento) == true) //se for numerico
+                                        {
+                                            dataNota = data;
+                                            tentativa = true;
+
+                                        } else {
+                                            
+                                            throw new Exception("Erro: Data invalida");
+                                                                            
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                        System.out.println("Digite a data da nota do Aluno novamente: ");
+                                        data = s.next(); 
+                                        tentativa = false;
+                                    }
+                                } 
+
+                                Nota nota = new Nota(DisciplinaNota, valor, dataNota);
                                 
                                 
 
-                                Aluno aluno = new Aluno (nome, dataNascimento, telefone, endereco, matricula, anoIngresso);
+                                Aluno aluno = new Aluno (nomeAluno, dataAluno, telefoneAluno, endereco, matriculaAluno, anoIngresso);
                                 aluno.adicionarNota(nota);
 
                                 
@@ -119,6 +287,7 @@ public class Main {
                                 gerenciaAlunoInstance.cadastrarAluno(aluno);
                             } else {
                                 System.out.println("Error: Disciplina nao encontrada");
+                                menu();
                             }
                     }
 
@@ -221,7 +390,7 @@ public class Main {
 
                     
                         
-                    Disciplina disciplinaT = null; // Declaração fora do loop
+                    Disciplina disciplinaT = null; 
 
                     for(int i = 0; i < disciplinas.size(); i++) {
                         if(NomedisciplinaTurma.equals(disciplinas.get(i).getNomeDisciplina())) {
@@ -451,6 +620,7 @@ public class Main {
 
     }
 
+    //funções para auxilio
 
     public static void menu(){
         System.out.println("=================================================================================================\n");
@@ -472,5 +642,16 @@ public class Main {
         System.out.println("14 - Listar as turmas que estão associadas a um determinado professor\n");
         System.out.println("15 - Sair\n");
         System.out.println("=================================================================================================\n");
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            //tenta converter a string para inteiro se conseguir é numerico
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
     }
 }
