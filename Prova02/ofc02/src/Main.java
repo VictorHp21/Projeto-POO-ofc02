@@ -10,7 +10,7 @@ public class Main {
         gerenciaAluno gerenciaAlunoInstance = new gerenciaAluno();
         gerenciaProfessor gerenciaProfessorInstance = new gerenciaProfessor();
 
-        boolean tentativa = false;
+        ArmazenadorDados armazenador = new ArmazenadorDados();
 
             //testes
             //endereco teste
@@ -60,13 +60,15 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Nome inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(nome); 
 
                 String dataAluno = InputUtils.getValidInput(
             "Digite a data de nascimento do Aluno: ",
                     s::next,
                     InputUtils::isNumeric,
        "Erro: Data inválida. Por favor, digite novamente."
-);
+                );
+                armazenador.adicionarDado(dataAluno); 
                                                      
                 String telefoneAlunoStr = InputUtils.getValidInput(
                     "Digite o telefone do Aluno: ",
@@ -75,6 +77,8 @@ public class Main {
                     "Erro: Telefone inválido. Por favor, digite novamente."
                 );
                 long telefoneAluno = Long.parseLong(telefoneAlunoStr);
+                armazenador.adicionarDado(telefoneAluno); 
+                
 
                 System.out.println("Digite o endereço do Aluno");
 
@@ -84,6 +88,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Rua inválida. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(rua); 
                
                 String numeroAlunoStr = InputUtils.getValidInput(
                     "Numero: ",
@@ -92,6 +97,7 @@ public class Main {
                     "Erro: Número inválido. Por favor, digite novamente."
                 );
                 int numeroAluno = Integer.parseInt(numeroAlunoStr);
+                armazenador.adicionarDado(numeroAlunoStr); 
                
                 String bairroAluno = InputUtils.getValidInput(
                     "Digite o Bairro do Aluno: ",
@@ -99,6 +105,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Bairro inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(bairroAluno); 
 
                 Endereco endereco = new Endereco(rua, numeroAluno, bairroAluno);
       
@@ -109,6 +116,7 @@ public class Main {
                     "Erro: Matricula inválida. Por favor, digite novamente."
                 );
                 long matriculaAluno = Long.parseLong(MatriculaAlunoStr);
+                armazenador.adicionarDado(matriculaAluno); 
 
                 String anoIngressoStr = InputUtils.getValidInput(
                     "Digite o ano de ingresso do Aluno: ",
@@ -117,6 +125,7 @@ public class Main {
                     "Erro: Ano inválido. Por favor, digite novamente."
                 );
                 int anoIngresso = Integer.parseInt(anoIngressoStr);
+                armazenador.adicionarDado(anoIngresso); 
 
                 System.out.println("Em quais diciplinas o aluno será cadastrado?");
 
@@ -145,6 +154,7 @@ public class Main {
                     input -> input >= 0 && input <= 10, // Validação para garantir que a nota esteja entre 0 e 10
                     "Erro: Valor inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(valor); 
 
                             System.out.println("Digite a data da nota do Aluno nesta disciplina");
 
@@ -154,6 +164,7 @@ public class Main {
                                         InputUtils::isNumeric,
                            "Erro: Data inválida. Por favor, digite novamente."
                             );
+                            armazenador.adicionarDado(dataNota); 
                          
                             Nota nota = new Nota(DisciplinaNota, valor, dataNota);
 
@@ -170,6 +181,7 @@ public class Main {
                             
                         }
                 }
+                armazenador.salvarEmArquivo("dados.txt");
                 break;
 
             case 2:
@@ -180,6 +192,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Nome inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(nomeProfessor); 
               
                 String dataNascimentoProfessor = InputUtils.getValidInput(
                     "Digite a data de nascimento do Professor: ",
@@ -187,6 +200,7 @@ public class Main {
                             InputUtils::isNumeric,
                "Erro: Data inválida. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(dataNascimentoProfessor); 
 
 
                 String telefoneProfessorStr = InputUtils.getValidInput(
@@ -196,6 +210,7 @@ public class Main {
                     "Erro: Telefone inválido. Por favor, digite novamente."
                 );
                 long telefoneProfessor = Long.parseLong(telefoneProfessorStr);
+                armazenador.adicionarDado(telefoneProfessor); 
 
                 System.out.println("Digite o endereço do Professor");
              
@@ -205,6 +220,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Rua inválida. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(ruaProfessor); 
                
                 String numeroProfessorStr = InputUtils.getValidInput(
                     "Numero: ",
@@ -213,6 +229,7 @@ public class Main {
                     "Erro: Número inválido. Por favor, digite novamente."
                 );
                 int numeroProfessor = Integer.parseInt(numeroProfessorStr);
+                armazenador.adicionarDado(numeroProfessor); 
                
                 String bairroProfessor = InputUtils.getValidInput(
                     "Digite o Bairro do Aluno: ",
@@ -220,8 +237,8 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Bairro inválido. Por favor, digite novamente."
                 );
-          
-                    
+                armazenador.adicionarDado(bairroProfessor); 
+ 
 
                 Endereco enderecoProfessor = new Endereco(ruaProfessor, numeroProfessor, bairroProfessor);
 
@@ -231,6 +248,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Area inválida. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(areaFormacao); 
                 
   
                 String anoAdmissaoStr = InputUtils.getValidInput(
@@ -240,6 +258,7 @@ public class Main {
                     "Erro: Ano inválido. Por favor, digite novamente."
                 );
                 int anoAdmissao = Integer.parseInt(anoAdmissaoStr);
+                armazenador.adicionarDado(anoAdmissao); 
 
 
                 String emailProfessor = InputUtils.getValidInput(
@@ -248,6 +267,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Area inválida. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(emailProfessor); 
 
                 System.out.println("Quais diciplinas o professor leciona?");
 
@@ -262,6 +282,7 @@ public class Main {
                     }
                 System.out.println("Selecione digite o nome da disciplina para cadastrar o professor");
                 String NomedisciplinaProf = s.next();
+                armazenador.adicionarDado(NomedisciplinaProf); 
 
                     for(int i = 0; i < disciplinas.size(); i++){
                         if(NomedisciplinaProf.equals(disciplinas.get(i).getNomeDisciplina())){
@@ -278,7 +299,7 @@ public class Main {
                         }
                 }
 
-
+                armazenador.salvarEmArquivo("dados.txt");
                 break;
             case 3:
 
@@ -288,6 +309,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Nome inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(nomeDisciplina); 
 
                 String cargaHorariaStr = InputUtils.getValidInput(
                     "Digite a carga horaria da Disciplina: ",
@@ -296,6 +318,7 @@ public class Main {
                     "Erro: Número inválido. Por favor, digite novamente."
                 );
                 int cargaHoraria = Integer.parseInt(cargaHorariaStr);
+                armazenador.adicionarDado(cargaHoraria); 
 
                 String codigoStr = InputUtils.getValidInput(
                     "Digite o codigo da Disciplina: ",
@@ -304,10 +327,13 @@ public class Main {
                     "Erro: Número inválido. Por favor, digite novamente."
                 );
                 int codigo = Integer.parseInt(codigoStr);
+                armazenador.adicionarDado(codigo); 
 
                         Disciplina disciplina = new Disciplina (nomeDisciplina, cargaHoraria, codigo);
 
                         disciplinas.add(disciplina);
+
+                        armazenador.salvarEmArquivo("dados.txt");
 
                 break;
             case 4:
@@ -318,6 +344,8 @@ public class Main {
                     "Erro: Número inválido. Por favor, digite novamente."
                 );
                 int codigoTurma = Integer.parseInt(codigoTurmaStr);
+                armazenador.adicionarDado(codigoTurma); 
+
                   
 
                 Turma turma = new Turma (codigoTurma);
@@ -342,6 +370,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Nome inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(nomeDisciplinaturma); 
 
                 
                     
@@ -377,6 +406,7 @@ public class Main {
                             input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                             "Erro: Nome inválido. Por favor, digite novamente."
                         );
+                        armazenador.adicionarDado(NomeprofessorTurma); 
 
                             for(int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++){
                                 if(NomeprofessorTurma.equals(gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNome())){
@@ -404,6 +434,7 @@ public class Main {
                             input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                             "Erro: Nome inválido. Por favor, digite novamente."
                         );
+                        armazenador.adicionarDado(NomealunoTurma); 
 
                                 for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
                                         if(NomealunoTurma.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
@@ -419,7 +450,7 @@ public class Main {
 
                             turmas.add(turma);
 
-                    
+                            armazenador.salvarEmArquivo("dados.txt");
 
                 break;
             case 5:
@@ -434,6 +465,7 @@ public class Main {
                     input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                     "Erro: Nome inválido. Por favor, digite novamente."
                 );
+                armazenador.adicionarDado(NomealunoNota); 
 
                     for(int i = 0; i < gerenciaAlunoInstance.getAlunosCadastrados().size(); i++){
                         if(NomealunoNota.equals(gerenciaAlunoInstance.getAlunosCadastrados().get(i).getNome())){
@@ -458,6 +490,7 @@ public class Main {
                                                     s.next(); 
                                                 }
                                             }
+                                            armazenador.adicionarDado(valornotaAluno); 
 
                                         String datanota = InputUtils.getValidInput(
                                             "Digite a data da nota: ",
@@ -465,6 +498,7 @@ public class Main {
                                                     InputUtils::isNumeric,
                                        "Erro: Data inválida. Por favor, digite novamente."
                                         );
+                                        armazenador.adicionarDado(datanota); 
 
                                         String DisciplinaNota = disciplinasAluno.getNomeDisciplina();
 
@@ -488,7 +522,7 @@ public class Main {
                             }
 
             }
-
+            armazenador.salvarEmArquivo("dados.txt");
 
                 break;
             case 6:
@@ -566,6 +600,7 @@ public class Main {
                                 "Erro: Número inválido. Por favor, digite novamente."
                             );
                             int codigodisciplina = Integer.parseInt(codigodisciplinaStr);
+                            armazenador.adicionarDado(codigodisciplina); 
 
 
                                 for (Disciplina disciplinasAluno : disciplinas) {
@@ -576,6 +611,7 @@ public class Main {
                                 }
                     }
 
+                    armazenador.salvarEmArquivo("dados.txt");
                 break;
             case 14:
                 System.out.println("Deseja listar as turmas de qual professor? ");
@@ -592,6 +628,7 @@ public class Main {
                             input -> !input.matches("-?\\d+(\\.\\d+)?"), 
                             "Erro: Nome inválido. Por favor, digite novamente."
                         );
+                        armazenador.adicionarDado(nomeProfessorturmas); 
 
                         for (int i = 0; i < gerenciaProfessorInstance.getProfessoresCadastrados().size(); i++) {
                             if (gerenciaProfessorInstance.getProfessoresCadastrados().get(i).getNomeProfessor().equals(nomeProfessorturmas)) {
@@ -599,7 +636,7 @@ public class Main {
                             }
                     }
                  
-
+                    armazenador.salvarEmArquivo("dados.txt");
                 break;
             case 15:
                 System.out.println("Saindo...");
@@ -609,6 +646,7 @@ public class Main {
                 break;
         }
     }
+        
 }
 
     //funções para auxilio
